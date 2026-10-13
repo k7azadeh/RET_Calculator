@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>RET Subscription Optimizer</title>
+<style>
+:root{--ink:#172033;--muted:#687386;--line:#e3e8ef;--bg:#f4f6fa;--card:#fff;--blue:#2557d6;--blue2:#eaf0ff;--green:#147d57;--greenbg:#e8f7ef;--orange:#9a5b00;--orangebg:#fff4df;--shadow:0 10px 30px rgba(20,35,70,.07)}*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.5 Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}.wrap{max-width:1180px;margin:auto;padding:30px 20px 50px}.hero{background:linear-gradient(120deg,#14295b,#2557d6);color:white;padding:28px 30px;border-radius:22px;box-shadow:var(--shadow);margin-bottom:22px}.eyebrow{text-transform:uppercase;letter-spacing:.13em;font-size:11px;font-weight:800;opacity:.78}.hero h1{font-size:clamp(28px,4vw,40px);line-height:1.1;margin:9px 0}.hero p{margin:0;color:#e1e9ff;max-width:760px}.route{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-top:20px}.pill{border:1px solid #ffffff55;background:#ffffff14;padding:7px 11px;border-radius:999px;font-size:13px}.layout{display:grid;grid-template-columns:340px minmax(0,1fr);gap:20px;align-items:start}.panel,.card{background:var(--card);border:1px solid var(--line);border-radius:18px;box-shadow:var(--shadow)}.panel{padding:21px;position:sticky;top:12px}.panel h2,.sectionhead h2{font-size:18px;margin:0 0 4px}.sub{color:var(--muted);font-size:13px;margin:0 0 20px}.field{margin:17px 0}.fieldtop{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:7px}.field label{font-weight:650;font-size:13px}.value{font-variant-numeric:tabular-nums;font-weight:750;color:var(--blue)}input[type=range]{width:100%;accent-color:var(--blue)}input[type=number],select{width:100%;border:1px solid #d8deea;border-radius:10px;padding:10px 11px;background:#fff;color:var(--ink);font:inherit;outline-color:var(--blue)}.two{display:grid;grid-template-columns:1fr 1fr;gap:10px}.hint{font-size:12px;color:var(--muted);margin-top:5px}.toggle{display:flex;gap:9px;align-items:flex-start;font-size:13px;margin:15px 0}.toggle input{margin-top:4px;accent-color:var(--blue)}.content{display:grid;gap:20px}.metrics{display:grid;grid-template-columns:repeat(3,1fr);gap:13px}.metric{padding:19px}.metric .label{font-size:12px;color:var(--muted);font-weight:700}.metric .big{font-size:clamp(23px,3vw,32px);font-weight:800;letter-spacing:-.04em;margin:7px 0 2px;font-variant-numeric:tabular-nums}.metric .small{font-size:12px;color:var(--muted)}.winner{border:2px solid #8bd4b3;background:linear-gradient(180deg,#fff,#f2fcf7)}.winner .big{color:var(--green)}.sectionhead{display:flex;justify-content:space-between;align-items:end;gap:12px;margin-bottom:13px}.sectionhead .sub{margin:0}.options{display:grid;gap:10px}.option{border:1px solid var(--line);border-radius:14px;padding:16px;display:grid;grid-template-columns:minmax(0,1fr) auto;gap:10px;align-items:center}.option.best{border:2px solid #63bd95;background:#f4fcf7}.option h3{font-size:15px;margin:0 0 3px}.option p{font-size:12px;color:var(--muted);margin:0}.option .cost{text-align:right;font-weight:800;font-size:21px;font-variant-numeric:tabular-nums}.option .peryear{font-size:12px;color:var(--muted);font-weight:500}.tag{display:inline-block;font-size:10px;font-weight:800;letter-spacing:.04em;text-transform:uppercase;border-radius:5px;padding:3px 6px;background:var(--greenbg);color:var(--green);margin-left:7px;vertical-align:2px}.tablewrap{overflow-x:auto}.table{width:100%;border-collapse:collapse;min-width:570px}.table th,.table td{text-align:right;padding:12px 10px;border-bottom:1px solid var(--line);font-size:13px;font-variant-numeric:tabular-nums}.table th:first-child,.table td:first-child{text-align:left}.table th{color:var(--muted);font-weight:700;font-size:11px;text-transform:uppercase;letter-spacing:.04em}.table tr:last-child td{border-bottom:0}.table tr.bestrow td{background:#f0fbf5;font-weight:750}.barlist{display:grid;gap:14px}.barrow{display:grid;grid-template-columns:120px 1fr 92px;align-items:center;gap:12px;font-size:13px}.track{height:11px;background:#edf0f5;border-radius:999px;overflow:hidden}.bar{height:100%;background:#8ea8f7;border-radius:999px}.barrow.bestbar .bar{background:#2eaa78}.barrow strong{text-align:right;font-variant-numeric:tabular-nums}.note{background:#fff8e9;border:1px solid #f4dfb1;color:#6c4a0b;border-radius:12px;padding:13px 15px;font-size:12px}.foot{color:var(--muted);font-size:12px;line-height:1.6}.foot a{color:var(--blue)}.reset{border:1px solid var(--line);background:white;border-radius:9px;padding:8px 10px;font-weight:650;color:var(--ink);cursor:pointer}.actions{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-top:15px}.smalltitle{font-size:13px;font-weight:800;margin:18px 0 8px}.hide{display:none!important}@media(max-width:850px){.layout{grid-template-columns:1fr}.panel{position:static}.metrics{grid-template-columns:1fr 1fr}.metrics .metric:last-child{grid-column:1/-1}}@media(max-width:520px){.wrap{padding:14px 12px 30px}.hero{padding:23px 20px}.metrics{grid-template-columns:1fr}.metrics .metric:last-child{grid-column:auto}.option{grid-template-columns:1fr}.option .cost{text-align:left}.barrow{grid-template-columns:90px 1fr 75px;gap:7px}}
+
+/* Subscription purchase links */
+.buy-actions{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+.buy-link{display:inline-flex;align-items:center;justify-content:center;gap:6px;min-height:42px;padding:10px 13px;border-radius:10px;background:var(--blue);color:#fff!important;text-decoration:none;font-size:13px;font-weight:750;line-height:1.25}
+.buy-link.secondary{background:#fff;color:var(--blue)!important;border:1px solid #cbd6f5}
+.buy-link:focus-visible{outline:3px solid #91b2ff;outline-offset:2px}
+.buy-help{font-size:11px!important;line-height:1.45;color:var(--muted)!important;margin-top:7px!important}
+@media(max-width:650px){.buy-actions{display:grid;grid-template-columns:1fr}.buy-link{width:100%;min-height:46px;font-size:14px}}
+
+/* Mobile-first refinements */
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+button,input,select{touch-action:manipulation}
+@media(max-width:650px){
+  body{font-size:16px}
+  .wrap{padding:10px 10px 34px;max-width:100%;overflow-wrap:anywhere}
+  .hero{padding:20px 17px;border-radius:17px;margin-bottom:12px}
+  .hero h1{font-size:29px;letter-spacing:-.035em}
+  .hero p{font-size:14px;line-height:1.45}
+  .route{gap:7px;margin-top:14px}
+  .pill{font-size:12px;padding:6px 9px}
+  .layout{display:flex;flex-direction:column;gap:12px}
+  .panel,.content{width:100%;min-width:0}
+  .panel{position:static;padding:16px;border-radius:15px}
+  .panel h2,.sectionhead h2{font-size:18px}
+  .sub{margin-bottom:14px}
+  .field{margin:16px 0}
+  .field label{font-size:14px;line-height:1.35}
+  .fieldtop{align-items:flex-start;gap:8px}
+  .value{white-space:nowrap;font-size:14px}
+  input[type=range]{height:30px;margin:5px 0;min-width:0}
+  input[type=number],select{font-size:16px;min-height:46px;padding:11px;border-radius:11px}
+  .two{gap:8px}
+  .toggle{font-size:14px;gap:10px;line-height:1.4}
+  .toggle input{width:19px;height:19px;flex:0 0 auto}
+  .reset{min-height:42px;padding:10px 12px}
+  .actions{align-items:flex-start;flex-wrap:wrap}
+  .content{gap:12px}
+  .metrics{grid-template-columns:1fr 1fr;gap:8px}
+  .metric{padding:13px;border-radius:14px;min-width:0}
+  .metric .label{font-size:11px;line-height:1.35}
+  .metric .big{font-size:clamp(21px,6vw,27px);line-height:1.15;overflow-wrap:normal}
+  .metrics .metric:last-child{grid-column:1/-1}
+  .winner{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;column-gap:10px}
+  .winner .label{grid-column:1/-1}
+  .winner .big{grid-column:1;grid-row:2}
+  .winner .small{grid-column:2;grid-row:2;text-align:right;max-width:145px}
+  .card{padding:15px!important;border-radius:15px;min-width:0}
+  .sectionhead{align-items:flex-start}
+  .option{grid-template-columns:minmax(0,1fr);padding:13px;gap:7px;border-radius:12px}
+  .option h3{font-size:15px;line-height:1.4}
+  .option p{font-size:12px;line-height:1.45;overflow-wrap:anywhere}
+  .option .cost{text-align:left;font-size:24px;display:flex;align-items:baseline;justify-content:space-between;gap:10px;flex-wrap:wrap}
+  .option .peryear{font-size:12px}
+  .tag{font-size:9px}
+  .barrow{grid-template-columns:82px minmax(35px,1fr) 72px;gap:6px;font-size:11px}
+  #bars{min-height:180px!important}
+  .tablewrap{margin:0 -3px;overflow-x:auto;-webkit-overflow-scrolling:touch}
+  .table{min-width:530px}
+  .table th,.table td{padding:10px 8px;font-size:12px}
+  .note{font-size:12px;line-height:1.5;padding:12px}
+  .foot{font-size:12px;overflow-wrap:anywhere}
+  a{overflow-wrap:anywhere}
+}
+@media(max-width:360px){
+  .wrap{padding-left:7px;padding-right:7px}
+  .hero{padding:17px 14px}
+  .hero h1{font-size:26px}
+  .metrics{grid-template-columns:1fr}
+  .metrics .metric:last-child{grid-column:auto}
+  .winner{display:block}
+  .winner .small{text-align:left;max-width:none}
+  .barrow{grid-template-columns:72px minmax(25px,1fr) 66px;gap:5px}
+  .two{grid-template-columns:1fr 1fr}
+}
+
+</style>
+<script src="https://cdn.plot.ly/plotly-2.35.2.min.js"></script>
+</head>
+<body><main class="wrap">
+<header class="hero"><div class="eyebrow">Personal commute cost planner · 2026</div><h1>Find your best RET subscription</h1><p>Compare pay-as-you-go, RET 20% Korting, RET 40% Korting and an unlimited regional pass. Change the assumptions and the results update instantly.</p><div class="route"><span class="pill">🚇 Nieuw Verlaat</span><span aria-hidden="true">→</span><span class="pill">Dijkzigt</span><span class="pill">Personal OV-chipkaart</span></div></header>
+<div class="layout"><aside class="panel"><h2>Your travel assumptions</h2><p class="sub">Start with your actual €3.46 fare, then tune the numbers.</p>
+<div class="field"><div class="fieldtop"><label for="fare">Fare per one-way journey</label><span class="value" id="fareOut">€3.46</span></div><input id="fare" type="range" min="0.50" max="8" step="0.01" value="3.46"><div class="hint">Full fare you currently pay on your OV-chipkaart.</div></div>
+<div class="field"><div class="fieldtop"><label for="days">Commute days per week</label><span class="value" id="daysOut">5 days</span></div><input id="days" type="range" min="0" max="7" step="1" value="5"></div>
+<div class="field"><div class="fieldtop"><label for="trips">One-way journeys per commute day</label><span class="value" id="tripsOut">2</span></div><input id="trips" type="range" min="1" max="4" step="1" value="2"><div class="hint">A normal return commute = 2 journeys.</div></div>
+<div class="field"><div class="fieldtop"><label for="weeks">Weeks per month</label><span class="value" id="weeksOut">4.33</span></div><input id="weeks" type="range" min="4" max="4.5" step="0.01" value="4.33"></div>
+<div class="field"><div class="fieldtop"><label for="extra">Extra one-way journeys per month</label><span class="value" id="extraOut">4</span></div><input id="extra" type="range" min="0" max="60" step="1" value="4"><div class="hint">For evenings, weekends or other RET trips.</div></div>
+<div class="smalltitle">Subscription settings</div><div class="two"><div><label for="p20" style="font-size:12px;font-weight:650">20% price / month (€)</label><input id="p20" type="number" min="0" step="0.10" value="7.90"></div><div><label for="p40" style="font-size:12px;font-weight:650">40% price / month (€)</label><input id="p40" type="number" min="0" step="0.10" value="28.70"></div></div>
+<div class="field"><div class="fieldtop"><label for="regio">Unlimited regional pass cost</label></div><select id="regio"><option value="0">Exclude regional pass</option><option value="40">€40/month — 1 star (check coverage)</option><option value="63">€63/month — 1 zone / Regio Vrij R10 equivalent not guaranteed</option><option value="84">€84/month — R10 Rotterdam Centrum (Regio Vrij)</option><option value="103">€103/month — R13 (Regio Vrij)</option><option value="128">€128/month — R11 (Regio Vrij)</option><option value="153">€153/month — R12/R15 (Regio Vrij)</option><option value="203">€203/month — 4-star Regio Vrij</option><option value="253">€253/month — 5-star Regio Vrij</option><option value="304">€304/month — 6-star Regio Vrij</option><option value="custom">Custom price…</option></select><div id="customWrap" class="hide" style="margin-top:8px"><input id="customRegio" type="number" min="0" step="1" value="100" aria-label="Custom regional pass monthly price"></div><div class="hint">Only compare a pass if its validity area covers your whole commute.</div></div>
+<label class="toggle"><input type="checkbox" id="regioValid"><span>I have checked that the selected regional pass covers Nieuw Verlaat ↔ Dijkzigt.</span></label>
+<div class="actions"><span class="hint">Edits stay in this page only.</span><button class="reset" id="reset">Reset defaults</button></div>
+</aside><section class="content">
+<div class="metrics"><div class="card metric"><div class="label">Monthly journeys</div><div class="big" id="journeys">47.3</div><div class="small" id="journeyDetail">43.3 commute journeys + 4 extra</div></div><div class="card metric"><div class="label">Pay-as-you-go baseline</div><div class="big" id="baseline">€163.56</div><div class="small">Estimated monthly spend</div></div><div class="card metric winner"><div class="label">Best eligible option</div><div class="big" id="bestCost">€126.83</div><div class="small" id="bestLabel">RET 40% Korting · €36.72 saved/month</div></div></div>
+<div class="card" style="padding:20px"><div class="sectionhead"><div><h2>Monthly cost comparison</h2><p class="sub">Subscription fee + fares after discount.</p></div></div><div class="options" id="options">
+<div class="option"><div><h3>Pay as you go</h3><p>No subscription; pay the full fare for every journey.</p><p>Subscription €0.00 · travel €163.56</p></div><div class="cost">€163.56<div class="peryear">€1,962.70 / year</div></div></div>
+<div class="option"><div><h3>RET 20% Korting</h3><p>€7.90/month subscription · 20% off each fare.</p><p>Subscription €7.90 · travel €130.85</p></div><div class="cost">€138.75<div class="peryear">€1,664.96 / year</div></div></div>
+<div class="option best"><div><h3>RET 40% Korting <span class="tag">Best value</span></h3><p>€28.70/month subscription · 40% off each fare.</p><p>Subscription €28.70 · travel €98.13</p></div><div class="cost">€126.83<div class="peryear">€1,522.02 / year</div></div></div>
+</div></div>
+<div class="card" style="padding:20px"><div class="sectionhead"><div><h2>Cost breakdown</h2><p class="sub">Relative monthly cost at your current settings.</p></div></div><div id="bars" style="width:100%;min-height:230px"><p class="hint">Monthly totals at current settings:</p><p>Pay as you go — €163.56</p><p>RET 20% Korting — €138.75</p><p><strong>RET 40% Korting — €126.83</strong></p></div></div>
+<div class="card" style="padding:20px"><div class="sectionhead"><div><h2>Annual view</h2><p class="sub">Assumes these travel habits continue for 12 months.</p></div></div><div class="tablewrap"><table class="table"><thead><tr><th>Option</th><th>Monthly total</th><th>Annual total</th><th>Annual savings vs. pay-as-you-go</th></tr></thead><tbody id="annual"><tr><td>Pay as you go</td><td>€163.56</td><td>€1,962.70</td><td>—</td></tr><tr><td>RET 20% Korting</td><td>€138.75</td><td>€1,664.96</td><td>€297.74 saved</td></tr><tr class="bestrow"><td>RET 40% Korting</td><td>€126.83</td><td>€1,522.02</td><td>€440.68 saved</td></tr></tbody></table></div></div>
+<div class="note" id="note">At the default settings, RET 40% Korting is the lowest-cost eligible option: about €126.83/month versus €163.56 pay-as-you-go. Estimates assume the discount applies to the full fare.</div>
+<div class="card" style="padding:20px"><div class="sectionhead"><div><h2>Ready to get the discount?</h2><p class="sub">Use the links on the RET 20% or RET 40% option above to open the official purchase page.</p></div></div><p class="foot">Because you currently use a personal OV-chipkaart, the legacy RET MaandKorting product is ordered through the RET webshop and then collected at a pickup point. RET is transitioning discount products to OVpay, so check the current product and payment-card requirements before ordering. <a href="https://webshop.ret.nl/webwinkel" target="_blank" rel="noopener noreferrer">Open RET webshop ↗</a> · <a href="https://www.ret.nl/home/reisproducten/producten-tarieven.html" target="_blank" rel="noopener noreferrer">Compare official RET products ↗</a></p></div>
+<div class="card" style="padding:20px"><div class="sectionhead"><div><h2>How this estimate works</h2><p class="sub">Transparent assumptions; no hidden calculations.</p></div></div><div class="foot">• Journey count = commute days/week × journeys/day × weeks/month + extra journeys/month.<br>• RET 20% and 40% Korting discounts are modelled as applying to the full fare you entered, because RET's 2026 MaandKorting terms state that the discount applies to both the base fare and kilometre fare.<br>• The default subscription prices are €7.90 and €28.70 as shown on RET's current product page. The OV-chipkaart-specific product terms PDF has also shown different prices, so confirm the price shown at purchase before buying.<br>• Regional pass prices are reference inputs only; coverage and product eligibility need to be checked separately.<br><br>Official references: <a href="https://www.ret.nl/home/reisproducten/producten-tarieven.html" target="_blank" rel="noopener">RET products & tariffs</a> · <a href="https://bestanden.ret.nl/user_upload/Documenten/PDF/Productvoorwaarden/2026/2026_RET_MaandKorting.pdf" target="_blank" rel="noopener">2026 RET MaandKorting conditions</a> · <a href="https://bestanden.ret.nl/user_upload/Documenten/PDF/Productvoorwaarden/2026/2026_Regio_Vrij.pdf" target="_blank" rel="noopener">2026 Regio Vrij prices</a>.</div></div>
+</section></div></main>
+<script>
+(function(){
+  'use strict';
+  function init(){
+    const $=id=>document.getElementById(id);
+    const money=n=>new Intl.NumberFormat('nl-NL',{style:'currency',currency:'EUR'}).format(Number.isFinite(n)?n:0);
+    const num=n=>new Intl.NumberFormat('nl-NL',{maximumFractionDigits:1}).format(Number.isFinite(n)?n:0);
+    const defaults={fare:3.46,days:5,trips:2,weeks:4.33,extra:4,p20:7.90,p40:28.70,regio:'0',customRegio:100,regioValid:false};
+    const inputIds=['fare','days','trips','weeks','extra','p20','p40','regio','customRegio','regioValid'];
+    function read(){return {fare:Math.max(0,Number($('fare').value)||0),days:Number($('days').value)||0,trips:Number($('trips').value)||0,weeks:Number($('weeks').value)||0,extra:Number($('extra').value)||0,p20:Math.max(0,Number($('p20').value)||0),p40:Math.max(0,Number($('p40').value)||0),regio:$('regio').value==='custom'?Math.max(0,Number($('customRegio').value)||0):Number($('regio').value)||0,regioValid:$('regioValid').checked};}
+    function renderBars(rows,best){const el=$('bars');const max=Math.max(1,...rows.map(r=>r.total));el.innerHTML=rows.map(r=>`<div class="barrow"><span>${r.name.replace(' Korting','')}</span><div class="track"><div class="bar ${r.id===best.id?'best':''}" style="width:${Math.max(0,r.total/max*100)}%"></div></div><span class="barvalue">${money(r.total)}</span></div>`).join('');}
+    function calculate(){
+      const v=read();$('customWrap').classList.toggle('hide',$('regio').value!=='custom');
+      $('fareOut').textContent=money(v.fare);$('daysOut').textContent=v.days+' '+(v.days===1?'day':'days');$('tripsOut').textContent=String(v.trips);$('weeksOut').textContent=v.weeks.toFixed(2);$('extraOut').textContent=String(v.extra);
+      const commute=v.days*v.trips*v.weeks,journeys=commute+v.extra,base=journeys*v.fare;
+      const rows=[{id:'pay',name:'Pay as you go',desc:'No subscription; full fare for every journey.',fee:0,travel:base,total:base},{id:'20',name:'RET 20% Korting',desc:money(v.p20)+'/month subscription · 20% discount modelled.',fee:v.p20,travel:base*.8,total:v.p20+base*.8},{id:'40',name:'RET 40% Korting',desc:money(v.p40)+'/month subscription · 40% discount modelled.',fee:v.p40,travel:base*.6,total:v.p40+base*.6}];
+      if(v.regio>0)rows.push({id:'regio',name:'Unlimited regional pass',desc:money(v.regio)+'/month; route coverage must be confirmed.',fee:v.regio,travel:0,total:v.regio,eligible:v.regioValid});
+      const eligible=rows.filter(r=>r.id!=='regio'||r.eligible);const best=eligible.reduce((a,b)=>b.total<a.total?b:a,eligible[0]);
+      $('journeys').textContent=num(journeys);$('journeyDetail').textContent=num(commute)+' commute journeys + '+v.extra+' extra';$('baseline').textContent=money(base);$('bestCost').textContent=money(best.total);$('bestLabel').textContent=best.name+' · '+money(base-best.total)+' saved/month';
+      $('options').innerHTML=rows.map(r=>{const blocked=r.id==='regio'&&!r.eligible,isBest=r.id===best.id;const buyLinks=(r.id==='20'||r.id==='40')?`<div class="buy-actions"><a class="buy-link" href="https://webshop.ret.nl/webwinkel" target="_blank" rel="noopener noreferrer">Buy ${r.id==='20'?'20%':'40%'} discount on RET webshop ↗</a><a class="buy-link secondary" href="https://www.ret.nl/home/reisproducten/producten-tarieven.html" target="_blank" rel="noopener noreferrer">Official product details ↗</a></div><p class="buy-help">For your personal OV-chipkaart, the RET webshop order may need to be collected at a pickup point. Check the price and availability before paying.</p>`:'';return `<div class="option ${isBest?'best':''}" style="${blocked?'opacity:.6':''}"><div><h3>${r.name}${isBest?'<span class="tag">Best value</span>':''}${blocked?'<span class="tag" style="background:#fff0dc;color:#8a5500">Coverage unconfirmed</span>':''}</h3><p>${r.desc}${blocked?' Excluded until coverage is confirmed.':''}</p><p style="margin-top:7px">Subscription ${money(r.fee)} · travel ${money(r.travel)}</p>${buyLinks}</div><div class="cost">${money(r.total)}<div class="peryear">${money(r.total*12)} / year</div></div></div>`;}).join('');
+      renderBars(rows,best);
+      $('annual').innerHTML=rows.map(r=>{const blocked=r.id==='regio'&&!r.eligible,savings=(base-r.total)*12;return `<tr class="${r.id===best.id?'bestrow':''}" style="${blocked?'opacity:.5':''}"><td>${r.name}${blocked?' (coverage unconfirmed)':''}</td><td>${money(r.total)}</td><td>${money(r.total*12)}</td><td>${r.id==='pay'?'—':(savings>=0?money(savings)+' saved':money(-savings)+' extra cost')}</td></tr>`;}).join('');
+      $('note').textContent=v.regio>0&&!v.regioValid?'The regional pass is excluded until you confirm it covers both Nieuw Verlaat and Dijkzigt. At current settings, '+best.name+' is the cheapest eligible option.':'At current settings, '+best.name+' is the cheapest eligible option. Discounts are modelled against the full entered fare; verify RET product conditions before buying.';
+    }
+    inputIds.forEach(id=>{const el=$(id);el.addEventListener('input',calculate);el.addEventListener('change',calculate);});
+    $('reset').addEventListener('click',()=>{Object.entries(defaults).forEach(([k,v])=>{if(k==='regioValid')$(k).checked=v;else $(k).value=v;});calculate();});
+    calculate();
+  }
+  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init);else init();
+})();
+</script></body></html>
